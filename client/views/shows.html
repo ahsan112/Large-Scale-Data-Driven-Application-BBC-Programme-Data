@@ -1,0 +1,105 @@
+
+
+    <div class="box">
+      <div class="container-3">
+          <span class="icon"><i class="fa fa-search"></i></span>
+            <form   method="GET">
+              <input  name="search" id="search"  placeholder="Search..." ng-model= "search"/>
+              <a type="submit" class="btn btn-primary" ng-click="filterBySearch(search)"> Search</a>
+            </form>
+      </div>
+    </div>
+    <div class="jumbotron">
+      <div class="container">
+        <ul class="alphabet">
+          <li ng-repeat="char in alphabet">
+            <span ng-click="filterByAlphabet(char)">{{char}}</span>
+          </li>
+        </ul>
+        <ul class="genres">
+          <li ng-repeat="genre in genres">
+            <span ng-click="filterByGenre(genre)">{{genre}}</span>
+          </li>
+          <li ng-repeat="type in media">
+            <span ng-click="filterByMedia(type)">{{type}}</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+     <div class="container wwidth">
+       <div class="panel panel-default">
+
+         <div class="panel-heading">
+           {{headingTitle}}
+
+           <label class="radio-inline">
+
+           </label>
+           <label class="radio-inline">
+             <input type="radio" ng-click = "order = 'is_clip'" name="button">Not Clip
+           </label>
+           <label class="radio-inline">
+             <input type="radio" ng-click = "order = '-is_clip'" name="button">Clip
+          </label>
+          <label class="radio-inline">
+          </label>
+          <label class="radio-inline">
+          </label>
+          <label class="radio-inline">
+            Results Found:   <span style="font-weight:bold" ng-init="results"> {{ results }} </span>
+          </label>
+
+           <div class="pull-right">
+             <input class="search" type="text" ng-model="searchInner" placeholder="Search within results...">
+           </div>
+         </div>
+
+
+         <div class="panel-body">
+           <div class="row show-list">
+             <div class="col-sm-6 col-sm-6" ng-repeat="show in shows | limitTo:limit | filter:searchInner |orderBy: order">
+               <div class="brdr bgc-fff pad-10 box-shad btm-mrg-20 property-listing">
+                   <div class="media">
+
+                       <div class="clearfix visible-sm"></div>
+
+                       <div class="media-body fnt-smaller">
+                           <a href="#" target="_parent"></a>
+
+                           <h4 class="media-heading ">
+                             <a href="#" target="_parent">{{show.complete_title}} </a></h4>
+                          <p ><span style="font-weight:bold">Service: </span>{{show.service}}
+
+                          </p>
+                           <p><span style="font-weight:bold">Categories: </span> {{show.categories}}
+
+                           </p>
+                           <p><span style="font-weight:bold">Tags: </span>{{show.tags}}
+
+                           </p>
+                           <p><span style="font-weight:bold">Start: </span> {{show.epoch_start}}
+
+                           </p>
+                           <p><span style="font-weight:bold">End: </span> {{show.epoch_end}}
+
+                           </p>
+                           <p><span style="font-weight:bold">Clip: </span> {{show.is_clip}}
+
+                           </p>
+                           <p><span style="font-weight:bold">Media Type: </span> {{show.media_type}}
+
+                           </p>
+
+                       </div>
+                   </div>
+               </div><!-- End Listing-->
+             </div>
+           </div>
+         </div>
+
+       </div>
+     </div>
+       <button style="width:120px;text-align:center;margin-left:447px" class="more btn btn-primary" ng-click="loadMore()"> Load More! </button>
+       <button style="width:120px;text-align:center;margin-left:23px;margin-right:45px" class="more btn btn-primary" ng-click="loadAll()"> Load All! </button>
+       <span ng-init="score"> Viewing {{ score }} Out of: </span><span ng-init="results"> {{ results }}</span>

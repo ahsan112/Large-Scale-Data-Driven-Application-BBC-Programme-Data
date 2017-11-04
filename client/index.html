@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html ng-app = "myApp">
+  <head>
+    <base href="/">
+    <meta charset="utf-8">
+    <title>BBC Programme</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+  </head>
+  <body>
+
+    <div class="navbar navbar-default navbar-static-top"
+     role="navigation" bs-navbar>
+      <div class="navbar-header">
+        <a class="navbar-brand">
+          <span class="glyphicon glyphicon-film"></span>
+          BBC<strong> Listings</strong></a>
+      </div>
+      <!-- <ul class="nav navbar-nav"> -->
+    </div>
+
+    <div class="container">
+
+      <div class="row">
+        <div class="col-md-12">
+          <div ng-view>
+
+          </div>
+        </div>
+      </div>
+    </div><!-- /.container -->
+
+
+    <script src="/bower_components/angular/angular.js"></script>
+    <script src="/bower_components/angular-route/angular-route.js"></script>
+      <script src="/bower_components/angular-res/angular-resource.js"></script>
+    <script src="/bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="/app.js"></script>
+    <script src="/controllers/shows.js"></script>
+  </body>
+
+
+</html>
